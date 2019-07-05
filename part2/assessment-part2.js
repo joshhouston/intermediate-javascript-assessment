@@ -44,7 +44,15 @@ function noWeakLink() {
     url: '/api/users'
   })
   // CODE HERE...
-
+  .then(response => {
+    firstUser = response.data[0]
+    return response
+  })
+  .then(response => {
+    thirdUser = response.data[2]
+    return response.data[9]
+  })
+  
 }
 
 
@@ -74,8 +82,12 @@ function large() {
   return 'My name is ' + this.name + ' and I am very heavy!'
 }
 // CODE HERE...
+let boundToElephant = large.apply(elephant, [elephant.name])
 
 
+// let boundToElephant = function() {
+//   large.call(elephant, )
+// }
 
 // *************
 // * PROBLEM 3 *
@@ -88,7 +100,9 @@ function large() {
 // and return the bound function.
 
 // CODE HERE...
+function deathStar(capacity, crew) {
 
+}
 
 
 // *************
@@ -103,7 +117,12 @@ function large() {
 // The closure function will return the combined value of assets and liabilities.
 
 // CODE HERE...
-
+function accountingOffice(assets) {
+  let num = 0
+  return function(liabilities){
+    return liabilities + assets
+  }
+}
 
 
 // *************
@@ -128,7 +147,16 @@ function large() {
 // };
 
 // CODE HERE...
-
+function forgetter(name) {
+  return {
+    rememberall: function(item) {
+      return {
+        name: name,
+        remember: [item]
+      }
+    }
+  }
+}
 
 
 // *************
